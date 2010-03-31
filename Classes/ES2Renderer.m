@@ -31,32 +31,86 @@ enum {
 
 @implementation ES2Renderer
 
-// Create an OpenGL ES 2.0 context
-- (id)init
-{
-    if ((self = [super init]))
-    {
-        context = [[EAGLContext alloc] initWithAPI:kEAGLRenderingAPIOpenGLES2];
-
-        if (!context || ![EAGLContext setCurrentContext:context] || ![self loadShaders])
-        {
+- (id) init {
+	
+	if (self = [super init]) {
+		
+		_backingWidth = -1;
+		_backingHeight = -1;
+		
+		NSLog(@"ES2 Renderer - init backing size (%d %d)", _backingWidth, _backingHeight);
+				
+		_context = [[EAGLContext alloc] initWithAPI:kEAGLRenderingAPIOpenGLES2];
+        
+        if (!_context || ![EAGLContext setCurrentContext:_context] || ![self loadShaders]) {
+			
             [self release];
             return nil;
-        }
-
-        // Create default framebuffer object. The backing will be allocated for the current layer in -resizeFromLayer
-        glGenFramebuffers(1, &defaultFramebuffer);
-        glGenRenderbuffers(1, &colorRenderbuffer);
-        glBindFramebuffer(GL_FRAMEBUFFER, defaultFramebuffer);
-        glBindRenderbuffer(GL_RENDERBUFFER, colorRenderbuffer);
-        glFramebufferRenderbuffer(GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT0, GL_RENDERBUFFER, colorRenderbuffer);
-    }
-
-    return self;
+			
+        } // if (!_context || ![EAGLContext setCurrentContext:_context] || ![self loadShaders])
+		
+	} // if (self = [super init])
+	
+	return self;
 }
 
-- (void)render
-{
+
+
+
+
+- (BOOL)resizeFromLayer:(CAEAGLLayer *)layer {
+	
+	NSLog(@"ES2 Renderer - resize From Layer");
+	
+	NSLog(@"bounds: %f %f %f %f", layer.bounds.origin.x, layer.bounds.origin.y, layer.bounds.size.width, layer.bounds.size.height);
+	NSLog(@"transform");
+	NSLog(@"%f %f %f %f", layer.transform.m11, layer.transform.m12, layer.transform.m13, layer.transform.m14);
+	NSLog(@"%f %f %f %f", layer.transform.m21, layer.transform.m22, layer.transform.m23, layer.transform.m24);
+	NSLog(@"%f %f %f %f", layer.transform.m31, layer.transform.m32, layer.transform.m33, layer.transform.m34);
+	NSLog(@"%f %f %f %f", layer.transform.m41, layer.transform.m42, layer.transform.m43, layer.transform.m44);
+	NSLog(@"backing size BEFORE glGetRenderbufferParameter: (%d %d)", _backingWidth, _backingHeight);
+
+	
+	if (_defaultFramebuffer) {
+		
+		glDeleteFramebuffers(1, &_defaultFramebuffer);
+		_defaultFramebuffer = 0;
+	}
+	
+	if (_colorRenderbuffer) {
+		
+		glDeleteRenderbuffers(1, &_colorRenderbuffer);
+		_colorRenderbuffer = 0;
+	}
+		
+	// framebuffer
+	glGenFramebuffers(1, &_defaultFramebuffer);
+	glBindFramebuffer(GL_FRAMEBUFFER, _defaultFramebuffer);
+	
+	// rgb buffer
+	glGenRenderbuffers(1, &_colorRenderbuffer);
+	glBindRenderbuffer(GL_RENDERBUFFER, _colorRenderbuffer);
+	glFramebufferRenderbuffer(GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT0, GL_RENDERBUFFER, _colorRenderbuffer);
+    [_context renderbufferStorage:GL_RENDERBUFFER fromDrawable:layer];
+	glGetRenderbufferParameteriv(GL_RENDERBUFFER, GL_RENDERBUFFER_WIDTH, &_backingWidth);
+    glGetRenderbufferParameteriv(GL_RENDERBUFFER, GL_RENDERBUFFER_HEIGHT, &_backingHeight);
+	
+	
+	
+	
+    if (glCheckFramebufferStatus(GL_FRAMEBUFFER) != GL_FRAMEBUFFER_COMPLETE) {
+		
+        NSLog(@"Failed to make complete framebuffer object %x", glCheckFramebufferStatus(GL_FRAMEBUFFER));
+        return NO;
+    }
+	
+	NSLog(@"backing size  AFTER glGetRenderbufferParameter: (%d %d)", _backingWidth, _backingHeight);
+	
+    return YES;
+}
+
+- (void)render {
+	
     // Replace the implementation of this method to do your own custom drawing
 
     static const GLfloat squareVertices[] = {
@@ -77,18 +131,18 @@ enum {
 
     // This application only creates a single context which is already set current at this point.
     // This call is redundant, but needed if dealing with multiple contexts.
-    [EAGLContext setCurrentContext:context];
+    [EAGLContext setCurrentContext:_context];
 
     // This application only creates a single default framebuffer which is already bound at this point.
     // This call is redundant, but needed if dealing with multiple framebuffers.
-    glBindFramebuffer(GL_FRAMEBUFFER, defaultFramebuffer);
-    glViewport(0, 0, backingWidth, backingHeight);
+    glBindFramebuffer(GL_FRAMEBUFFER, _defaultFramebuffer);
+    glViewport(0, 0, _backingWidth, _backingHeight);
 
     glClearColor(0.5f, 0.5f, 0.5f, 1.0f);
     glClear(GL_COLOR_BUFFER_BIT);
 
     // Use shader program
-    glUseProgram(program);
+    glUseProgram(_program);
 
     // Update uniform value
     glUniform1f(uniforms[UNIFORM_TRANSLATE], (GLfloat)transY);
@@ -103,9 +157,9 @@ enum {
     // Validate program before drawing. This is a good check, but only really necessary in a debug build.
     // DEBUG macro must be defined in your debug configurations if that's not already the case.
 #if defined(DEBUG)
-    if (![self validateProgram:program])
+    if (![self validateProgram:_program])
     {
-        NSLog(@"Failed to validate program: %d", program);
+        NSLog(@"Failed to validate program: %d", _program);
         return;
     }
 #endif
@@ -115,8 +169,8 @@ enum {
 
     // This application only creates a single color renderbuffer which is already bound at this point.
     // This call is redundant, but needed if dealing with multiple renderbuffers.
-    glBindRenderbuffer(GL_RENDERBUFFER, colorRenderbuffer);
-    [context presentRenderbuffer:GL_RENDERBUFFER];
+    glBindRenderbuffer(GL_RENDERBUFFER, _colorRenderbuffer);
+    [_context presentRenderbuffer:GL_RENDERBUFFER];
 }
 
 - (BOOL)compileShader:(GLuint *)shader type:(GLenum)type file:(NSString *)file
@@ -209,7 +263,7 @@ enum {
     NSString *vertShaderPathname, *fragShaderPathname;
 
     // Create shader program
-    program = glCreateProgram();
+    _program = glCreateProgram();
 
     // Create and compile vertex shader
     vertShaderPathname = [[NSBundle mainBundle] pathForResource:@"Shader" ofType:@"vsh"];
@@ -228,20 +282,20 @@ enum {
     }
 
     // Attach vertex shader to program
-    glAttachShader(program, vertShader);
+    glAttachShader(_program, vertShader);
 
     // Attach fragment shader to program
-    glAttachShader(program, fragShader);
+    glAttachShader(_program, fragShader);
 
     // Bind attribute locations
     // this needs to be done prior to linking
-    glBindAttribLocation(program, ATTRIB_VERTEX, "position");
-    glBindAttribLocation(program, ATTRIB_COLOR, "color");
+    glBindAttribLocation(_program, ATTRIB_VERTEX, "position");
+    glBindAttribLocation(_program, ATTRIB_COLOR, "color");
 
     // Link program
-    if (![self linkProgram:program])
+    if (![self linkProgram:_program])
     {
-        NSLog(@"Failed to link program: %d", program);
+        NSLog(@"Failed to link program: %d", _program);
 
         if (vertShader)
         {
@@ -253,17 +307,17 @@ enum {
             glDeleteShader(fragShader);
             fragShader = 0;
         }
-        if (program)
+        if (_program)
         {
-            glDeleteProgram(program);
-            program = 0;
+            glDeleteProgram(_program);
+            _program = 0;
         }
         
         return FALSE;
     }
 
     // Get uniform locations
-    uniforms[UNIFORM_TRANSLATE] = glGetUniformLocation(program, "translate");
+    uniforms[UNIFORM_TRANSLATE] = glGetUniformLocation(_program, "translate");
 
     // Release vertex and fragment shaders
     if (vertShader)
@@ -274,50 +328,33 @@ enum {
     return TRUE;
 }
 
-- (BOOL)resizeFromLayer:(CAEAGLLayer *)layer
-{
-    // Allocate color buffer backing based on the current layer size
-    glBindRenderbuffer(GL_RENDERBUFFER, colorRenderbuffer);
-    [context renderbufferStorage:GL_RENDERBUFFER fromDrawable:layer];
-    glGetRenderbufferParameteriv(GL_RENDERBUFFER, GL_RENDERBUFFER_WIDTH, &backingWidth);
-    glGetRenderbufferParameteriv(GL_RENDERBUFFER, GL_RENDERBUFFER_HEIGHT, &backingHeight);
-
-    if (glCheckFramebufferStatus(GL_FRAMEBUFFER) != GL_FRAMEBUFFER_COMPLETE)
-    {
-        NSLog(@"Failed to make complete framebuffer object %x", glCheckFramebufferStatus(GL_FRAMEBUFFER));
-        return NO;
-    }
-
-    return YES;
-}
-
 - (void)dealloc
 {
     // Tear down GL
-    if (defaultFramebuffer)
+    if (_defaultFramebuffer)
     {
-        glDeleteFramebuffers(1, &defaultFramebuffer);
-        defaultFramebuffer = 0;
+        glDeleteFramebuffers(1, &_defaultFramebuffer);
+        _defaultFramebuffer = 0;
     }
 
-    if (colorRenderbuffer)
+    if (_colorRenderbuffer)
     {
-        glDeleteRenderbuffers(1, &colorRenderbuffer);
-        colorRenderbuffer = 0;
+        glDeleteRenderbuffers(1, &_colorRenderbuffer);
+        _colorRenderbuffer = 0;
     }
 
-    if (program)
+    if (_program)
     {
-        glDeleteProgram(program);
-        program = 0;
+        glDeleteProgram(_program);
+        _program = 0;
     }
 
     // Tear down context
-    if ([EAGLContext currentContext] == context)
+    if ([EAGLContext currentContext] == _context)
         [EAGLContext setCurrentContext:nil];
 
-    [context release];
-    context = nil;
+    [_context release];
+    _context = nil;
 
     [super dealloc];
 }

@@ -8,15 +8,14 @@
 
 #import <UIKit/UIKit.h>
 
-@class EAGLView;
+@class EAGLViewController;
 
 @interface HelloiPadGLSLPortraitLandscapeAppDelegate : NSObject <UIApplicationDelegate> {
-    UIWindow *window;
-    EAGLView *glView;
+    UIWindow			*_window;
+	EAGLViewController	*_controller;
 }
 
-@property (nonatomic, retain) IBOutlet UIWindow *window;
-@property (nonatomic, retain) IBOutlet EAGLView *glView;
+@property(nonatomic,retain) IBOutlet UIWindow *window;
+@property(nonatomic,retain) IBOutlet EAGLViewController *controller;
 
 @end
-
