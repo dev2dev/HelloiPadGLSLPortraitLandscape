@@ -34,7 +34,7 @@
 
 - (void) applicationWillResignActive:(UIApplication *)application {
 	
-	NSLog(@"Hello iPad GLSL Portrait Landscape AppDelegate - application Will Resign Active - [glView stopAnimation]");
+	NSLog(@"Hello iPad GLSL Portrait Landscape AppDelegate - application Will Resign Active");
 	
 	EAGLView *glView = (EAGLView *)self.controller.view;
 	[glView stopAnimation];
@@ -42,15 +42,13 @@
 
 - (void) applicationDidBecomeActive:(UIApplication *)application {
 	
-	NSLog(@"Hello iPad GLSL Portrait Landscape AppDelegate - application Did Become Active - [glView startAnimation]");
+	NSLog(@"Hello iPad GLSL Portrait Landscape AppDelegate - application Did Become Active");
 	
-//	EAGLView *glView = (EAGLView *)self.controller.view;
-//	[glView startAnimation];
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application {
 	
-	NSLog(@"Hello iPad GLSL Portrait Landscape AppDelegate - application Will Terminate - [glView stopAnimation]");
+	NSLog(@"Hello iPad GLSL Portrait Landscape AppDelegate - application Will Terminate");
 	
 	EAGLView *glView = (EAGLView *)self.controller.view;
 	[glView stopAnimation];

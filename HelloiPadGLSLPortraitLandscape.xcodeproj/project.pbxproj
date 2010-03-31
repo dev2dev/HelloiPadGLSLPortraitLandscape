@@ -18,6 +18,11 @@
 		28FD14FE0DC6FC130079059D /* EAGLView.m in Sources */ = {isa = PBXBuildFile; fileRef = 28FD14FD0DC6FC130079059D /* EAGLView.m */; };
 		28FD15000DC6FC520079059D /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 28FD14FF0DC6FC520079059D /* OpenGLES.framework */; };
 		28FD15080DC6FC5B0079059D /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 28FD15070DC6FC5B0079059D /* QuartzCore.framework */; };
+		316286B61163D87100F59CA6 /* JLMMatrixLibrary.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 316286AE1163D87100F59CA6 /* JLMMatrixLibrary.cpp */; };
+		316286B71163D87100F59CA6 /* TEIRendererHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 316286B11163D87100F59CA6 /* TEIRendererHelper.m */; };
+		316286B81163D87100F59CA6 /* TEITexture.m in Sources */ = {isa = PBXBuildFile; fileRef = 316286B31163D87100F59CA6 /* TEITexture.m */; };
+		316286B91163D87100F59CA6 /* VectorMatrix.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 316286B41163D87100F59CA6 /* VectorMatrix.cpp */; };
+		316286D21163D94400F59CA6 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 316286D11163D94400F59CA6 /* CoreGraphics.framework */; };
 		317BF4E5116380F1004F0AF9 /* EAGLViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 317BF4E4116380F1004F0AF9 /* EAGLViewController.m */; };
 		317BF4FE116383E0004F0AF9 /* EAGLViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 317BF4FD116383E0004F0AF9 /* EAGLViewController.xib */; };
 /* End PBXBuildFile section */
@@ -39,6 +44,16 @@
 		28FD14FF0DC6FC520079059D /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
 		28FD15070DC6FC5B0079059D /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		316286AD1163D87100F59CA6 /* ConstantsAndMacros.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConstantsAndMacros.h; sourceTree = "<group>"; };
+		316286AE1163D87100F59CA6 /* JLMMatrixLibrary.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = JLMMatrixLibrary.cpp; sourceTree = "<group>"; };
+		316286AF1163D87100F59CA6 /* JLMMatrixLibrary.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JLMMatrixLibrary.h; sourceTree = "<group>"; };
+		316286B01163D87100F59CA6 /* TEIRendererHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TEIRendererHelper.h; sourceTree = "<group>"; };
+		316286B11163D87100F59CA6 /* TEIRendererHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TEIRendererHelper.m; sourceTree = "<group>"; };
+		316286B21163D87100F59CA6 /* TEITexture.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TEITexture.h; sourceTree = "<group>"; };
+		316286B31163D87100F59CA6 /* TEITexture.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TEITexture.m; sourceTree = "<group>"; };
+		316286B41163D87100F59CA6 /* VectorMatrix.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = VectorMatrix.cpp; sourceTree = "<group>"; };
+		316286B51163D87100F59CA6 /* VectorMatrix.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VectorMatrix.h; sourceTree = "<group>"; };
+		316286D11163D94400F59CA6 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		317BF4E3116380F1004F0AF9 /* EAGLViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EAGLViewController.h; sourceTree = "<group>"; };
 		317BF4E4116380F1004F0AF9 /* EAGLViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EAGLViewController.m; sourceTree = "<group>"; };
 		317BF4FD116383E0004F0AF9 /* EAGLViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EAGLViewController.xib; sourceTree = "<group>"; };
@@ -55,6 +70,7 @@
 				1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */,
 				28FD15000DC6FC520079059D /* OpenGLES.framework in Frameworks */,
 				28FD15080DC6FC5B0079059D /* QuartzCore.framework in Frameworks */,
+				316286D21163D94400F59CA6 /* CoreGraphics.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -64,9 +80,9 @@
 		080E96DDFE201D6D7F000001 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				2514C27110084DB100A42282 /* ESRenderer.h */,
-				2514C26F10084DB100A42282 /* ES2Renderer.h */,
-				2514C27010084DB100A42282 /* ES2Renderer.m */,
+				316286BA1163D87500F59CA6 /* Vectors & Matrices */,
+				316286AC1163D83700F59CA6 /* Renderer */,
+				316286AA1163D82B00F59CA6 /* Renderables */,
 				28FD14FC0DC6FC130079059D /* EAGLView.h */,
 				28FD14FD0DC6FC130079059D /* EAGLView.m */,
 				317BF4E3116380F1004F0AF9 /* EAGLViewController.h */,
@@ -133,8 +149,42 @@
 				28FD14FF0DC6FC520079059D /* OpenGLES.framework */,
 				1DF5F4DF0D08C38300B7A737 /* UIKit.framework */,
 				1D30AB110D05D00D00671497 /* Foundation.framework */,
+				316286D11163D94400F59CA6 /* CoreGraphics.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		316286AA1163D82B00F59CA6 /* Renderables */ = {
+			isa = PBXGroup;
+			children = (
+				316286B21163D87100F59CA6 /* TEITexture.h */,
+				316286B31163D87100F59CA6 /* TEITexture.m */,
+				316286B01163D87100F59CA6 /* TEIRendererHelper.h */,
+				316286B11163D87100F59CA6 /* TEIRendererHelper.m */,
+			);
+			name = Renderables;
+			sourceTree = "<group>";
+		};
+		316286AC1163D83700F59CA6 /* Renderer */ = {
+			isa = PBXGroup;
+			children = (
+				2514C27110084DB100A42282 /* ESRenderer.h */,
+				2514C26F10084DB100A42282 /* ES2Renderer.h */,
+				2514C27010084DB100A42282 /* ES2Renderer.m */,
+			);
+			name = Renderer;
+			sourceTree = "<group>";
+		};
+		316286BA1163D87500F59CA6 /* Vectors & Matrices */ = {
+			isa = PBXGroup;
+			children = (
+				316286AD1163D87100F59CA6 /* ConstantsAndMacros.h */,
+				316286B51163D87100F59CA6 /* VectorMatrix.h */,
+				316286B41163D87100F59CA6 /* VectorMatrix.cpp */,
+				316286AF1163D87100F59CA6 /* JLMMatrixLibrary.h */,
+				316286AE1163D87100F59CA6 /* JLMMatrixLibrary.cpp */,
+			);
+			name = "Vectors & Matrices";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -198,6 +248,10 @@
 				28FD14FE0DC6FC130079059D /* EAGLView.m in Sources */,
 				2514C27310084DB100A42282 /* ES2Renderer.m in Sources */,
 				317BF4E5116380F1004F0AF9 /* EAGLViewController.m in Sources */,
+				316286B61163D87100F59CA6 /* JLMMatrixLibrary.cpp in Sources */,
+				316286B71163D87100F59CA6 /* TEIRendererHelper.m in Sources */,
+				316286B81163D87100F59CA6 /* TEITexture.m in Sources */,
+				316286B91163D87100F59CA6 /* VectorMatrix.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

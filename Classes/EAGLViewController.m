@@ -57,7 +57,7 @@
 
 - (void)viewDidAppear:(BOOL)animated {
 	
-	NSLog(@"EAGL ViewController - view Did Disappear");
+	NSLog(@"EAGL ViewController - view Did Appear");
 	
 }
 

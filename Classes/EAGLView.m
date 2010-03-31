@@ -138,6 +138,8 @@
 
 - (void)startAnimation {
 	
+	NSLog(@"EAGL View - start Animation");
+	
     if (!animating) {
 		
 		displayLink = [NSClassFromString(@"CADisplayLink") displayLinkWithTarget:self selector:@selector(drawView:)];
@@ -151,6 +153,8 @@
 }
 
 - (void)stopAnimation {
+	
+	NSLog(@"EAGL View - stop Animation");
 	
     if (animating) {
 		
