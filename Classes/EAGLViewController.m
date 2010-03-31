@@ -10,6 +10,11 @@
 #import "EAGLView.h"
 #import "ES2Renderer.h"
 
+@interface EAGLViewController (PrivateMethods)
+- (NSString*)interfaceOrientationName:(UIInterfaceOrientation) interfaceOrientation;
+- (NSString*)deviceOrientationName:(UIDeviceOrientation) deviceOrientation;
+@end
+
 @implementation EAGLViewController
 
 - (void)dealloc {
@@ -31,9 +36,7 @@
  - (void)viewDidLoad {
 	
 	NSLog(@"EAGL ViewController - view Did Load");
-	
-    [super viewDidLoad];
-	
+		
 //	EAGLView *glView = (EAGLView *)self.view;
 //	
 //	TEITexture	*texture_0 = [[ [TEITexture alloc] initWithImageFile:@"lena" extension:@"png" mipmap:YES ] autorelease];
@@ -49,8 +52,12 @@
 - (void)viewWillAppear:(BOOL)animated {
 	
 	NSLog(@"EAGL ViewController - view Will Appear");
+		
+}
+
+- (void)viewDidAppear:(BOOL)animated {
 	
-	[super viewWillAppear:animated];
+	NSLog(@"EAGL ViewController - view Did Disappear");
 	
 }
 
@@ -58,7 +65,12 @@
 	
 	NSLog(@"EAGL ViewController - view Will Disappear");
 	
-	[super viewWillDisappear:animated];
+}
+
+- (void)viewDidDisappear:(BOOL)animated {
+	
+	NSLog(@"EAGL ViewController - view Did Disappear");
+	
 }
 
 - (void)viewDidUnload {
@@ -66,13 +78,33 @@
 	NSLog(@"EAGL ViewController - view Did Unload");
 }
 
-/*
-// Override to allow orientations other than the default portrait orientation.
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
-    // Return YES for supported orientations
-    return (interfaceOrientation == UIInterfaceOrientationPortrait);
-}
+
+	/*
+	UIDeviceOrientation currentDeviceOrientation = [UIDevice currentDevice].orientation;
+	UIInterfaceOrientation currentInterfaceOrientation = self.interfaceOrientation;
+	
+	NSLog(@"EAGL ViewController - should Autorotate To Interface Orientation: %@. Current Interface Orientation: %@. Current Device Orientation: %@",  [self interfaceOrientationName:interfaceOrientation], currentInterfaceOrientation, currentDeviceOrientation);
 */
+	
+	NSLog(@"EAGL ViewController - should Autorotate To Interface Orientation: %@",  [self interfaceOrientationName:interfaceOrientation]);
+	
+	return YES;
+}
+
+- (void)willRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration {
+	
+	/*
+	UIDeviceOrientation currentDeviceOrientation = [UIDevice currentDevice].orientation;
+	UIInterfaceOrientation currentInterfaceOrientation = self.interfaceOrientation;
+		
+	NSLog(@"EAGL ViewController - will Rotate To Interface Orientation: %@. Current Interface Orientation: %@. Current Device Orientation: %@", 
+		  [self interfaceOrientationName:toInterfaceOrientation], currentInterfaceOrientation, currentDeviceOrientation);
+	*/
+	
+	NSLog(@"EAGL ViewController - will Rotate To Interface Orientation: %@", [self interfaceOrientationName:toInterfaceOrientation]);
+	
+}
 
 - (void)didReceiveMemoryWarning {
 	// Releases the view if it doesn't have a superview.
@@ -80,5 +112,64 @@
 	
 	// Release any cached data, images, etc that aren't in use.
 }
+
+- (NSString*)interfaceOrientationName:(UIInterfaceOrientation) interfaceOrientation {
+	
+	NSString* result = nil;
+	
+	switch (interfaceOrientation) {
+			
+		case UIInterfaceOrientationPortrait:
+			result = @"UIInterfaceOrientationPortrait";
+			break;
+		case UIInterfaceOrientationPortraitUpsideDown:
+			result = @"UIInterfaceOrientationPortraitUpsideDown";
+			break;
+		case UIInterfaceOrientationLandscapeLeft:
+			result = @"UIInterfaceOrientationLandscapeLeft";
+			break;
+		case UIInterfaceOrientationLandscapeRight:
+			result = @"UIInterfaceOrientationLandscapeRight";
+			break;
+		default:
+			result = @"Unknown Interface Orientation";
+	}
+	
+	return result;
+};
+
+- (NSString*)deviceOrientationName:(UIDeviceOrientation) deviceOrientation {
+	
+	NSString* result = nil;
+	
+	switch (deviceOrientation) {
+			
+		case UIDeviceOrientationUnknown:
+			result = @"UIDeviceOrientationUnknown";
+			break;
+		case UIDeviceOrientationPortrait:
+			result = @"UIDeviceOrientationPortrait";
+			break;
+		case UIDeviceOrientationPortraitUpsideDown:
+			result = @"UIDeviceOrientationPortraitUpsideDown";
+			break;
+		case UIDeviceOrientationLandscapeLeft:
+			result = @"UIDeviceOrientationLandscapeLeft";
+			break;
+		case UIDeviceOrientationLandscapeRight:
+			result = @"UIDeviceOrientationLandscapeRight";
+			break;
+		case UIDeviceOrientationFaceUp:
+			result = @"UIDeviceOrientationFaceUp";
+			break;
+		case UIDeviceOrientationFaceDown:
+			result = @"UIDeviceOrientationFaceDown";
+			break;
+		default:
+			result = @"Unknown Device Orientation";
+	}
+	
+	return result;
+};
 
 @end

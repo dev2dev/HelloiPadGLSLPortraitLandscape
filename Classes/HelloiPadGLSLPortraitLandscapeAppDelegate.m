@@ -44,8 +44,8 @@
 	
 	NSLog(@"Hello iPad GLSL Portrait Landscape AppDelegate - application Did Become Active - [glView startAnimation]");
 	
-	EAGLView *glView = (EAGLView *)self.controller.view;
-	[glView startAnimation];
+//	EAGLView *glView = (EAGLView *)self.controller.view;
+//	[glView startAnimation];
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application {

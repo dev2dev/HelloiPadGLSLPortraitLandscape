@@ -8,6 +8,27 @@
 
 #import "ES2Renderer.h"
 
+static const GLfloat squareVertices[] = {
+	-0.5f, -0.33f,
+	0.5f, -0.33f,
+	-0.5f,  0.33f,
+	0.5f,  0.33f,
+};
+
+//static const GLubyte squareColors[] = {
+//	255, 255,   0, 255,
+//	0,   255, 255, 255,
+//	0,     0,   0,   0,
+//	255,   0, 255, 255,
+//};
+
+static const GLubyte squareColors[] = {
+	255, 0,   0, 255,
+	255, 0,   0, 255,
+	0,   0, 255, 255,
+	0,   0, 255, 255,
+};
+
 // uniform index
 enum {
     UNIFORM_TRANSLATE,
@@ -53,10 +74,6 @@ enum {
 	
 	return self;
 }
-
-
-
-
 
 - (BOOL)resizeFromLayer:(CAEAGLLayer *)layer {
 	
@@ -110,22 +127,6 @@ enum {
 }
 
 - (void)render {
-	
-    // Replace the implementation of this method to do your own custom drawing
-
-    static const GLfloat squareVertices[] = {
-        -0.5f, -0.33f,
-         0.5f, -0.33f,
-        -0.5f,  0.33f,
-         0.5f,  0.33f,
-    };
-
-    static const GLubyte squareColors[] = {
-        255, 255,   0, 255,
-        0,   255, 255, 255,
-        0,     0,   0,   0,
-        255,   0, 255, 255,
-    };
 
     static float transY = 0.0f;
 
