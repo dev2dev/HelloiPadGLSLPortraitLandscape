@@ -6,6 +6,9 @@
 //  Copyright Douglass Turner Consulting 2009. All rights reserved.
 //
 
+#define TEIMax(a, b) ((a) > (b) ? (a) : (b))
+#define TEIMin(a, b) ((a) < (b) ? (a) : (b))
+
 #define TIEABS(a)		((a) <= 0 ? -(a) : (a) )
 
 #define M3D_2PI (2.0 * M_PI)

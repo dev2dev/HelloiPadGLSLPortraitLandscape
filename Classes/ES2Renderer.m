@@ -7,12 +7,20 @@
 //
 
 #import "ES2Renderer.h"
+#import "ConstantsAndMacros.h"
+
+//static const GLfloat squareVertices[] = {
+//	-0.5f, -0.33f,
+//	0.5f, -0.33f,
+//	-0.5f,  0.33f,
+//	0.5f,  0.33f,
+//};
 
 static const GLfloat squareVertices[] = {
-	-0.5f, -0.33f,
-	0.5f, -0.33f,
-	-0.5f,  0.33f,
-	0.5f,  0.33f,
+	-0.5f, -0.5f,
+	 0.5f, -0.5f,
+	-0.5f,  0.5f,
+	 0.5f,  0.5f,
 };
 
 static const GLubyte squareColors[] = {
@@ -123,46 +131,30 @@ enum {
 
     static float transY = 0.0f;
 
-    // This application only creates a single context which is already set current at this point.
-    // This call is redundant, but needed if dealing with multiple contexts.
     [EAGLContext setCurrentContext:_context];
-
-    // This application only creates a single default framebuffer which is already bound at this point.
-    // This call is redundant, but needed if dealing with multiple framebuffers.
     glBindFramebuffer(GL_FRAMEBUFFER, _defaultFramebuffer);
-    glViewport(0, 0, _backingWidth, _backingHeight);
+
+    GLfloat dimen = TEIMin(_backingWidth, _backingHeight);
+	glViewport(0, 0, dimen, dimen);
 
     glClearColor(0.5f, 0.5f, 0.5f, 1.0f);
     glClear(GL_COLOR_BUFFER_BIT);
 
-    // Use shader program
     glUseProgram(_program);
 
-    // Update uniform value
     glUniform1f(uniforms[UNIFORM_TRANSLATE], (GLfloat)transY);
     transY += 0.075f;	
 
-    // Update attribute values
-    glVertexAttribPointer(ATTRIB_VERTEX, 2, GL_FLOAT, 0, 0, squareVertices);
+    glVertexAttribPointer(ATTRIB_VERTEX,	2, GL_FLOAT,			0, 0, squareVertices);
+    glVertexAttribPointer(ATTRIB_COLOR,		4, GL_UNSIGNED_BYTE,	1, 0, squareColors);
+
     glEnableVertexAttribArray(ATTRIB_VERTEX);
-    glVertexAttribPointer(ATTRIB_COLOR, 4, GL_UNSIGNED_BYTE, 1, 0, squareColors);
     glEnableVertexAttribArray(ATTRIB_COLOR);
 
-    // Validate program before drawing. This is a good check, but only really necessary in a debug build.
-    // DEBUG macro must be defined in your debug configurations if that's not already the case.
-#if defined(DEBUG)
-    if (![self validateProgram:_program])
-    {
-        NSLog(@"Failed to validate program: %d", _program);
-        return;
-    }
-#endif
 
-    // Draw
     glDrawArrays(GL_TRIANGLE_STRIP, 0, 4);
 
-    // This application only creates a single color renderbuffer which is already bound at this point.
-    // This call is redundant, but needed if dealing with multiple renderbuffers.
+	
     glBindRenderbuffer(GL_RENDERBUFFER, _colorRenderbuffer);
     [_context presentRenderbuffer:GL_RENDERBUFFER];
 }
