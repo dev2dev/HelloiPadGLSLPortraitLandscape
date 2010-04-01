@@ -59,11 +59,11 @@
 	CAEAGLLayer *eaglLayer = (CAEAGLLayer *)self.layer;
 	
 	NSLog(@"bounds: %f %f %f %f", eaglLayer.bounds.origin.x, eaglLayer.bounds.origin.y, eaglLayer.bounds.size.width, eaglLayer.bounds.size.height);
-	NSLog(@"transform");
-	NSLog(@"%f %f %f %f", eaglLayer.transform.m11, eaglLayer.transform.m12, eaglLayer.transform.m13, eaglLayer.transform.m14);
-	NSLog(@"%f %f %f %f", eaglLayer.transform.m21, eaglLayer.transform.m22, eaglLayer.transform.m23, eaglLayer.transform.m24);
-	NSLog(@"%f %f %f %f", eaglLayer.transform.m31, eaglLayer.transform.m32, eaglLayer.transform.m33, eaglLayer.transform.m34);
-	NSLog(@"%f %f %f %f", eaglLayer.transform.m41, eaglLayer.transform.m42, eaglLayer.transform.m43, eaglLayer.transform.m44);
+//	NSLog(@"transform");
+//	NSLog(@"%f %f %f %f", eaglLayer.transform.m11, eaglLayer.transform.m12, eaglLayer.transform.m13, eaglLayer.transform.m14);
+//	NSLog(@"%f %f %f %f", eaglLayer.transform.m21, eaglLayer.transform.m22, eaglLayer.transform.m23, eaglLayer.transform.m24);
+//	NSLog(@"%f %f %f %f", eaglLayer.transform.m31, eaglLayer.transform.m32, eaglLayer.transform.m33, eaglLayer.transform.m34);
+//	NSLog(@"%f %f %f %f", eaglLayer.transform.m41, eaglLayer.transform.m42, eaglLayer.transform.m43, eaglLayer.transform.m44);
 	
 	eaglLayer.opaque = TRUE;
 	eaglLayer.drawableProperties = [NSDictionary dictionaryWithObjectsAndKeys:

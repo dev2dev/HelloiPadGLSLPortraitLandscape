@@ -10,22 +10,28 @@
 #import <OpenGLES/ES2/gl.h>
 #import <OpenGLES/ES2/glext.h>
 
+@class TEIRendererHelper;
+
 @interface ES2Renderer : NSObject <ESRenderer> {
 	
-@private
-    EAGLContext *_context;
-
-    GLint _backingWidth;
-    GLint _backingHeight;
-
-    GLuint _defaultFramebuffer;
-    GLuint _colorRenderbuffer;
-
-    GLuint _program;
+	TEIRendererHelper *_rendererHelper;
+	
+	EAGLContext *_context;
+	
+	GLint _backingWidth;
+	GLint _backingHeight;
+	
+	GLuint _framebuffer;
+	GLuint _colorbuffer;
+	GLuint _depthbuffer;
+	
+	GLuint _program;
 }
 
-- (void)render;
-- (BOOL)resizeFromLayer:(CAEAGLLayer *)layer;
+@property (nonatomic, retain) TEIRendererHelper *rendererHelper;
+
+- (void) render;
+- (BOOL) resizeFromLayer:(CAEAGLLayer *)layer;
 
 @end
 

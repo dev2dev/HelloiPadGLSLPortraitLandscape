@@ -53,6 +53,44 @@ enum {
 
 @implementation ES2Renderer
 
+@synthesize rendererHelper = _rendererHelper;
+
+- (void) dealloc {
+	
+    [_rendererHelper release], _rendererHelper = nil;
+	
+	if (_colorbuffer) {
+		
+		glDeleteRenderbuffers(1, &_colorbuffer);
+		_colorbuffer = 0;
+	}
+	
+	if (_depthbuffer) {
+		
+		glDeleteRenderbuffers(1, &_depthbuffer);
+		_depthbuffer = 0;
+	}
+	
+	if (_framebuffer) {
+		
+		glDeleteFramebuffers(1, &_framebuffer);
+		_framebuffer = 0;
+	}
+	
+	if (_program) {
+		
+		glDeleteProgram(_program);
+		_program = 0;
+	}
+	
+	if ([EAGLContext currentContext] == _context) [EAGLContext setCurrentContext:nil];
+	
+	[_context release];
+	_context = nil;
+	
+	[super dealloc];
+}
+
 - (id) init {
 	
 	if (self = [super init]) {
@@ -81,50 +119,72 @@ enum {
 	NSLog(@"ES2 Renderer - resize From Layer");
 	
 	NSLog(@"bounds: %f %f %f %f", layer.bounds.origin.x, layer.bounds.origin.y, layer.bounds.size.width, layer.bounds.size.height);
-	NSLog(@"transform");
-	NSLog(@"%f %f %f %f", layer.transform.m11, layer.transform.m12, layer.transform.m13, layer.transform.m14);
-	NSLog(@"%f %f %f %f", layer.transform.m21, layer.transform.m22, layer.transform.m23, layer.transform.m24);
-	NSLog(@"%f %f %f %f", layer.transform.m31, layer.transform.m32, layer.transform.m33, layer.transform.m34);
-	NSLog(@"%f %f %f %f", layer.transform.m41, layer.transform.m42, layer.transform.m43, layer.transform.m44);
+//	NSLog(@"transform");
+//	NSLog(@"%f %f %f %f", layer.transform.m11, layer.transform.m12, layer.transform.m13, layer.transform.m14);
+//	NSLog(@"%f %f %f %f", layer.transform.m21, layer.transform.m22, layer.transform.m23, layer.transform.m24);
+//	NSLog(@"%f %f %f %f", layer.transform.m31, layer.transform.m32, layer.transform.m33, layer.transform.m34);
+//	NSLog(@"%f %f %f %f", layer.transform.m41, layer.transform.m42, layer.transform.m43, layer.transform.m44);
 	NSLog(@"backing size BEFORE glGetRenderbufferParameter: (%d %d)", _backingWidth, _backingHeight);
-
 	
-	if (_defaultFramebuffer) {
+	if (_colorbuffer) {
 		
-		glDeleteFramebuffers(1, &_defaultFramebuffer);
-		_defaultFramebuffer = 0;
+		glDeleteRenderbuffers(1, &_colorbuffer);
+		_colorbuffer = 0;
 	}
 	
-	if (_colorRenderbuffer) {
+	if (_depthbuffer) {
 		
-		glDeleteRenderbuffers(1, &_colorRenderbuffer);
-		_colorRenderbuffer = 0;
+		glDeleteRenderbuffers(1, &_depthbuffer);
+		_depthbuffer = 0;
 	}
+	
+	if (_framebuffer) {
 		
+		glDeleteFramebuffers(1, &_framebuffer);
+		_framebuffer = 0;
+	}
+	
 	// framebuffer
-	glGenFramebuffers(1, &_defaultFramebuffer);
-	glBindFramebuffer(GL_FRAMEBUFFER, _defaultFramebuffer);
+	glGenFramebuffers(1, &_framebuffer);
+	glBindFramebuffer(GL_FRAMEBUFFER, _framebuffer);
 	
 	// rgb buffer
-	glGenRenderbuffers(1, &_colorRenderbuffer);
-	glBindRenderbuffer(GL_RENDERBUFFER, _colorRenderbuffer);
-	glFramebufferRenderbuffer(GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT0, GL_RENDERBUFFER, _colorRenderbuffer);
+	glGenRenderbuffers(1, &_colorbuffer);
+	glBindRenderbuffer(GL_RENDERBUFFER, _colorbuffer);
+	glFramebufferRenderbuffer(GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT0, GL_RENDERBUFFER, _colorbuffer);
     [_context renderbufferStorage:GL_RENDERBUFFER fromDrawable:layer];
 	glGetRenderbufferParameteriv(GL_RENDERBUFFER, GL_RENDERBUFFER_WIDTH, &_backingWidth);
     glGetRenderbufferParameteriv(GL_RENDERBUFFER, GL_RENDERBUFFER_HEIGHT, &_backingHeight);
 	
-	
-	
+	// z-buffer
+	glGenRenderbuffers(1, &_depthbuffer);
+	glBindRenderbuffer(GL_RENDERBUFFER, _depthbuffer);
+	glRenderbufferStorage(GL_RENDERBUFFER, GL_DEPTH_COMPONENT16, _backingWidth, _backingHeight);	
+	glFramebufferRenderbuffer(GL_FRAMEBUFFER, GL_DEPTH_ATTACHMENT, GL_RENDERBUFFER, _depthbuffer);
 	
     if (glCheckFramebufferStatus(GL_FRAMEBUFFER) != GL_FRAMEBUFFER_COMPLETE) {
 		
-        NSLog(@"Failed to make complete framebuffer object %x", glCheckFramebufferStatus(GL_FRAMEBUFFER));
+		NSLog(@"Failed to make complete framebuffer object %x", glCheckFramebufferStatus(GL_FRAMEBUFFER));
         return NO;
     }
+    
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	NSLog(@"backing size  AFTER glGetRenderbufferParameter: (%d %d)", _backingWidth, _backingHeight);
 	
+//	[self setupGLView:layer.bounds.size];
+	
     return YES;
+	
 }
 
 - (void)render {
@@ -132,7 +192,7 @@ enum {
     static float transY = 0.0f;
 
     [EAGLContext setCurrentContext:_context];
-    glBindFramebuffer(GL_FRAMEBUFFER, _defaultFramebuffer);
+    glBindFramebuffer(GL_FRAMEBUFFER, _framebuffer);
 
     GLfloat dimen = TEIMin(_backingWidth, _backingHeight);
 	glViewport(0, 0, dimen, dimen);
@@ -155,12 +215,11 @@ enum {
     glDrawArrays(GL_TRIANGLE_STRIP, 0, 4);
 
 	
-    glBindRenderbuffer(GL_RENDERBUFFER, _colorRenderbuffer);
+    glBindRenderbuffer(GL_RENDERBUFFER, _colorbuffer);
     [_context presentRenderbuffer:GL_RENDERBUFFER];
 }
 
-- (BOOL)compileShader:(GLuint *)shader type:(GLenum)type file:(NSString *)file
-{
+- (BOOL)compileShader:(GLuint *)shader type:(GLenum)type file:(NSString *)file {
     GLint status;
     const GLchar *source;
 
@@ -197,8 +256,7 @@ enum {
     return TRUE;
 }
 
-- (BOOL)linkProgram:(GLuint)prog
-{
+- (BOOL)linkProgram:(GLuint)prog {
     GLint status;
 
     glLinkProgram(prog);
@@ -222,8 +280,7 @@ enum {
     return TRUE;
 }
 
-- (BOOL)validateProgram:(GLuint)prog
-{
+- (BOOL)validateProgram:(GLuint)prog {
     GLint logLength, status;
 
     glValidateProgram(prog);
@@ -243,8 +300,7 @@ enum {
     return TRUE;
 }
 
-- (BOOL)loadShaders
-{
+- (BOOL)loadShaders {
     GLuint vertShader, fragShader;
     NSString *vertShaderPathname, *fragShaderPathname;
 
@@ -312,37 +368,6 @@ enum {
         glDeleteShader(fragShader);
 
     return TRUE;
-}
-
-- (void)dealloc
-{
-    // Tear down GL
-    if (_defaultFramebuffer)
-    {
-        glDeleteFramebuffers(1, &_defaultFramebuffer);
-        _defaultFramebuffer = 0;
-    }
-
-    if (_colorRenderbuffer)
-    {
-        glDeleteRenderbuffers(1, &_colorRenderbuffer);
-        _colorRenderbuffer = 0;
-    }
-
-    if (_program)
-    {
-        glDeleteProgram(_program);
-        _program = 0;
-    }
-
-    // Tear down context
-    if ([EAGLContext currentContext] == _context)
-        [EAGLContext setCurrentContext:nil];
-
-    [_context release];
-    _context = nil;
-
-    [super dealloc];
 }
 
 @end

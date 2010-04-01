@@ -37,7 +37,8 @@
  - (void)viewDidLoad {
 	
 	NSLog(@"EAGL ViewController - view Did Load");
-		
+	 
+	 
 //	EAGLView *glView = (EAGLView *)self.view;
 //	
 //	TEITexture	*t = [[ [TEITexture alloc] initWithImageFile:@"twitter_fail_whale" extension:@"png" mipmap:YES ] autorelease];
@@ -54,6 +55,13 @@
 - (void)viewDidAppear:(BOOL)animated {
 	
 	NSLog(@"EAGL ViewController - view Did Appear");
+	
+	UIDeviceOrientation currentDeviceOrientation = [UIDevice currentDevice].orientation;
+	UIInterfaceOrientation currentInterfaceOrientation	= self.interfaceOrientation;
+	
+	NSLog(@"Current Interface: %@. Current Device: %@", 
+		  [self interfaceOrientationName:currentInterfaceOrientation], 
+		  [self deviceOrientationName:currentDeviceOrientation]);
 	
 }
 
@@ -80,7 +88,6 @@
 }
 
 - (void)willRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration {
-
 	
 	UIDeviceOrientation currentDeviceOrientation = [UIDevice currentDevice].orientation;
 	UIInterfaceOrientation currentInterfaceOrientation	= self.interfaceOrientation;
@@ -121,13 +128,13 @@
 			result = @"Portrait";
 			break;
 		case UIInterfaceOrientationPortraitUpsideDown:
-			result = @"Portrait Upside Down";
+			result = @"Portrait UpsideDown";
 			break;
 		case UIInterfaceOrientationLandscapeLeft:
-			result = @"Landscape Left";
+			result = @"LandscapeLeft";
 			break;
 		case UIInterfaceOrientationLandscapeRight:
-			result = @"Landscape Right";
+			result = @"LandscapeRight";
 			break;
 		default:
 			result = @"Unknown Interface Orientation";
@@ -149,19 +156,19 @@
 			result = @"Portrait";
 			break;
 		case UIDeviceOrientationPortraitUpsideDown:
-			result = @"Portrait Upside Down";
+			result = @"Portrait UpsideDown";
 			break;
 		case UIDeviceOrientationLandscapeLeft:
-			result = @"Landscape Left";
+			result = @"LandscapeLeft";
 			break;
 		case UIDeviceOrientationLandscapeRight:
-			result = @"Landscape Right";
+			result = @"LandscapeRight";
 			break;
 		case UIDeviceOrientationFaceUp:
-			result = @"Face Up";
+			result = @"FaceUp";
 			break;
 		case UIDeviceOrientationFaceDown:
-			result = @"Face Down";
+			result = @"FaceDown";
 			break;
 		default:
 			result = @"Unknown Device Orientation";
