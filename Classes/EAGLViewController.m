@@ -85,7 +85,7 @@
 	UIDeviceOrientation currentDeviceOrientation = [UIDevice currentDevice].orientation;
 	UIInterfaceOrientation currentInterfaceOrientation	= self.interfaceOrientation;
 	
-	NSLog(@"EAGL ViewController - will Rotate To Interface Orientation: %@. Current Interface Orientation: %@. Current Device Orientation: %@", 
+	NSLog(@"EAGL ViewController - will Rotate To Interface: %@. Current Interface: %@. Current Device: %@", 
 		  [self interfaceOrientationName:toInterfaceOrientation], 
 		  [self interfaceOrientationName:currentInterfaceOrientation], 
 		  [self deviceOrientationName:currentDeviceOrientation]);
@@ -97,13 +97,12 @@
 	UIDeviceOrientation currentDeviceOrientation = [UIDevice currentDevice].orientation;
 	UIInterfaceOrientation currentInterfaceOrientation	= self.interfaceOrientation;
 	
-	NSLog(@"EAGL ViewController - did Rotate From Interface Orientation: %@. Current Interface Orientation: %@. Current Device Orientation: %@", 
+	NSLog(@"EAGL ViewController - did Rotate From Interface: %@. Current Interface: %@. Current Device: %@", 
 		  [self interfaceOrientationName:fromInterfaceOrientation], 
 		  [self interfaceOrientationName:currentInterfaceOrientation], 
 		  [self deviceOrientationName:currentDeviceOrientation]);
 	
 }
-
 
 - (void)didReceiveMemoryWarning {
 	// Releases the view if it doesn't have a superview.
@@ -119,16 +118,16 @@
 	switch (interfaceOrientation) {
 			
 		case UIInterfaceOrientationPortrait:
-			result = @"UIInterfaceOrientationPortrait";
+			result = @"Portrait";
 			break;
 		case UIInterfaceOrientationPortraitUpsideDown:
-			result = @"UIInterfaceOrientationPortraitUpsideDown";
+			result = @"Portrait Upside Down";
 			break;
 		case UIInterfaceOrientationLandscapeLeft:
-			result = @"UIInterfaceOrientationLandscapeLeft";
+			result = @"Landscape Left";
 			break;
 		case UIInterfaceOrientationLandscapeRight:
-			result = @"UIInterfaceOrientationLandscapeRight";
+			result = @"Landscape Right";
 			break;
 		default:
 			result = @"Unknown Interface Orientation";
@@ -144,25 +143,25 @@
 	switch (deviceOrientation) {
 			
 		case UIDeviceOrientationUnknown:
-			result = @"UIDeviceOrientationUnknown";
+			result = @"Unknown";
 			break;
 		case UIDeviceOrientationPortrait:
-			result = @"UIDeviceOrientationPortrait";
+			result = @"Portrait";
 			break;
 		case UIDeviceOrientationPortraitUpsideDown:
-			result = @"UIDeviceOrientationPortraitUpsideDown";
+			result = @"Portrait Upside Down";
 			break;
 		case UIDeviceOrientationLandscapeLeft:
-			result = @"UIDeviceOrientationLandscapeLeft";
+			result = @"Landscape Left";
 			break;
 		case UIDeviceOrientationLandscapeRight:
-			result = @"UIDeviceOrientationLandscapeRight";
+			result = @"Landscape Right";
 			break;
 		case UIDeviceOrientationFaceUp:
-			result = @"UIDeviceOrientationFaceUp";
+			result = @"Face Up";
 			break;
 		case UIDeviceOrientationFaceDown:
-			result = @"UIDeviceOrientationFaceDown";
+			result = @"Face Down";
 			break;
 		default:
 			result = @"Unknown Device Orientation";

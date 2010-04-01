@@ -25,8 +25,8 @@ transform
 backing size BEFORE glGetRenderbufferParameter: (-1 -1)
 backing size  AFTER glGetRenderbufferParameter: (768 1024)
 EAGL View - start Animation
-[Switching to process 4460]
-EAGL ViewController - will Rotate To Interface Orientation: UIInterfaceOrientationLandscapeRight. Current Interface Orientation: UIInterfaceOrientationPortrait. Current Device Orientation: UIDeviceOrientationLandscapeLeft
+
+EAGL ViewController - will Rotate To Interface: Landscape Right. Current Interface: Portrait. Current Device: Landscape Left
 EAGL View - layout Subviews
 EAGL View - stop Animation
 ES2 Renderer - resize From Layer
@@ -39,4 +39,4 @@ transform
 backing size BEFORE glGetRenderbufferParameter: (768 1024)
 backing size  AFTER glGetRenderbufferParameter: (1024 768)
 EAGL View - start Animation
-EAGL ViewController - did Rotate From Interface Orientation: UIInterfaceOrientationPortrait. Current Interface Orientation: UIInterfaceOrientationLandscapeRight. Current Device Orientation: UIDeviceOrientationLandscapeLeft
+EAGL ViewController - did Rotate From Interface: Portrait. Current Interface: Landscape Right. Current Device: Landscape Left
