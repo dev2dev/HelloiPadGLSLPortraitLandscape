@@ -93,8 +93,6 @@
 
 - (void)drawView:(id)sender {
 	
-//	NSLog(@"EAGL View - draw View");
-		
     [renderer render];
 }
 
@@ -102,15 +100,9 @@
 	
 	NSLog(@"EAGL View - layout Subviews");
 	
-	// !!!!!!!!!!!!!!!!!
 	[self stopAnimation];
-	// !!!!!!!!!!!!!!!!!
-	
     [renderer resizeFromLayer:(CAEAGLLayer*)self.layer];
-	
-	// !!!!!!!!!!!!!!!!!
 	[self startAnimation];
-	// !!!!!!!!!!!!!!!!!
 
     [self drawView:nil];
 }

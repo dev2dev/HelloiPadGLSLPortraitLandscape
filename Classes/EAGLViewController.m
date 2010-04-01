@@ -9,7 +9,6 @@
 #import "EAGLViewController.h"
 #import "EAGLView.h"
 #import "ES2Renderer.h"
-#import "TEITexture.h"
 
 @interface EAGLViewController (PrivateMethods)
 - (NSString*)interfaceOrientationName:(UIInterfaceOrientation) interfaceOrientation;
@@ -37,12 +36,6 @@
  - (void)viewDidLoad {
 	
 	NSLog(@"EAGL ViewController - view Did Load");
-	 
-	 
-//	EAGLView *glView = (EAGLView *)self.view;
-//	
-//	TEITexture	*t = [[ [TEITexture alloc] initWithImageFile:@"twitter_fail_whale" extension:@"png" mipmap:YES ] autorelease];
-//	[glView.renderer.rendererHelper.renderables setObject:t forKey:@"texture_0"];
 
 }
 

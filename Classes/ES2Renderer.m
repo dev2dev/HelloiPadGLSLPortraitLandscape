@@ -9,13 +9,6 @@
 #import "ES2Renderer.h"
 #import "ConstantsAndMacros.h"
 
-//static const GLfloat squareVertices[] = {
-//	-0.5f, -0.33f,
-//	0.5f, -0.33f,
-//	-0.5f,  0.33f,
-//	0.5f,  0.33f,
-//};
-
 static const GLfloat squareVertices[] = {
 	-0.5f, -0.5f,
 	 0.5f, -0.5f,
@@ -167,21 +160,8 @@ enum {
 		NSLog(@"Failed to make complete framebuffer object %x", glCheckFramebufferStatus(GL_FRAMEBUFFER));
         return NO;
     }
-    
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 	
 	NSLog(@"backing size  AFTER glGetRenderbufferParameter: (%d %d)", _backingWidth, _backingHeight);
-	
-//	[self setupGLView:layer.bounds.size];
 	
     return YES;
 	

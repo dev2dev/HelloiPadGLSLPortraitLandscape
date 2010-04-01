@@ -9,12 +9,12 @@
 #import <UIKit/UIKit.h>
 #import <QuartzCore/QuartzCore.h>
 
-#import "ESRenderer.h"
+#import "ES2Renderer.h"
 
 @interface EAGLView : UIView {    
 	
 @private
-    id <ESRenderer> renderer;
+	ES2Renderer *renderer;
 
     BOOL animating;
     BOOL displayLinkSupported;
