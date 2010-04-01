@@ -1,0 +1,47 @@
+// Initial orientation
+Hello iPad GLSL Portrait Landscape AppDelegate - application Did Finish Launching
+EAGL ViewController - view Did Load
+EAGL View - init With Frame: origin(0.000000 0.000000) size(768.000000 1024.000000)
+EAGL View - initialize EAGL
+bounds: 0.000000 0.000000 768.000000 1024.000000
+transform
+1.000000 0.000000 0.000000 0.000000
+0.000000 1.000000 0.000000 0.000000
+0.000000 0.000000 1.000000 0.000000
+0.000000 0.000000 0.000000 1.000000
+ES2 Renderer - init backing size (-1 -1)
+EAGL ViewController - view Did Load
+EAGL ViewController - view Will Appear
+EAGL ViewController - should Autorotate To Interface Orientation: UIInterfaceOrientationPortrait
+EAGL ViewController - view Did Appear
+EAGL ViewController - should Autorotate To Interface Orientation: UIInterfaceOrientationPortrait
+Hello iPad GLSL Portrait Landscape AppDelegate - application Did Become Active
+EAGL View - layout Subviews
+EAGL View - stop Animation
+ES2 Renderer - resize From Layer
+bounds: 0.000000 0.000000 768.000000 1024.000000
+transform
+1.000000 0.000000 0.000000 0.000000
+0.000000 1.000000 0.000000 0.000000
+0.000000 0.000000 1.000000 0.000000
+0.000000 0.000000 0.000000 1.000000
+backing size BEFORE glGetRenderbufferParameter: (-1 -1)
+backing size  AFTER glGetRenderbufferParameter: (768 1024
+
+// Rotate device to landscape left
+EAGL View - start Animation
+[Switching to process 252]
+EAGL ViewController - should Autorotate To Interface Orientation: UIInterfaceOrientationLandscapeLeft
+EAGL ViewController - will Rotate To Interface Orientation: UIInterfaceOrientationLandscapeLeft
+EAGL View - layout Subviews
+EAGL View - stop Animation
+ES2 Renderer - resize From Layer
+bounds: 0.000000 0.000000 1024.000000 768.000000
+transform
+0.000000 -1.000000 0.000000 0.000000
+1.000000 0.000000 0.000000 0.000000
+0.000000 0.000000 1.000000 0.000000
+0.000000 0.000000 0.000000 1.000000
+backing size BEFORE glGetRenderbufferParameter: (768 1024)
+backing size  AFTER glGetRenderbufferParameter: (1024 768)
+EAGL View - start Animation

@@ -79,32 +79,35 @@
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
-
-	/*
-	UIDeviceOrientation currentDeviceOrientation = [UIDevice currentDevice].orientation;
-	UIInterfaceOrientation currentInterfaceOrientation = self.interfaceOrientation;
-	
-	NSLog(@"EAGL ViewController - should Autorotate To Interface Orientation: %@. Current Interface Orientation: %@. Current Device Orientation: %@",  [self interfaceOrientationName:interfaceOrientation], currentInterfaceOrientation, currentDeviceOrientation);
-*/
-	
-	NSLog(@"EAGL ViewController - should Autorotate To Interface Orientation: %@",  [self interfaceOrientationName:interfaceOrientation]);
 	
 	return YES;
 }
 
 - (void)willRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration {
+
 	
-	/*
 	UIDeviceOrientation currentDeviceOrientation = [UIDevice currentDevice].orientation;
-	UIInterfaceOrientation currentInterfaceOrientation = self.interfaceOrientation;
-		
-	NSLog(@"EAGL ViewController - will Rotate To Interface Orientation: %@. Current Interface Orientation: %@. Current Device Orientation: %@", 
-		  [self interfaceOrientationName:toInterfaceOrientation], currentInterfaceOrientation, currentDeviceOrientation);
-	*/
+	UIInterfaceOrientation currentInterfaceOrientation	= self.interfaceOrientation;
 	
-	NSLog(@"EAGL ViewController - will Rotate To Interface Orientation: %@", [self interfaceOrientationName:toInterfaceOrientation]);
+	NSLog(@"EAGL ViewController - will Rotate To Interface Orientation: %@. Current Interface Orientation: %@. Current Device Orientation: %@", 
+		  [self interfaceOrientationName:toInterfaceOrientation], 
+		  [self interfaceOrientationName:currentInterfaceOrientation], 
+		  [self deviceOrientationName:currentDeviceOrientation]);
+		
+}
+
+- (void)didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation {
+	
+	UIDeviceOrientation currentDeviceOrientation = [UIDevice currentDevice].orientation;
+	UIInterfaceOrientation currentInterfaceOrientation	= self.interfaceOrientation;
+	
+	NSLog(@"EAGL ViewController - did Rotate From Interface Orientation: %@. Current Interface Orientation: %@. Current Device Orientation: %@", 
+		  [self interfaceOrientationName:fromInterfaceOrientation], 
+		  [self interfaceOrientationName:currentInterfaceOrientation], 
+		  [self deviceOrientationName:currentDeviceOrientation]);
 	
 }
+
 
 - (void)didReceiveMemoryWarning {
 	// Releases the view if it doesn't have a superview.
