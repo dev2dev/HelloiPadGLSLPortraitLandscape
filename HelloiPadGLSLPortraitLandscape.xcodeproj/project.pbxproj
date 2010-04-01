@@ -25,10 +25,23 @@
 		316286D21163D94400F59CA6 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 316286D11163D94400F59CA6 /* CoreGraphics.framework */; };
 		317BF4E5116380F1004F0AF9 /* EAGLViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 317BF4E4116380F1004F0AF9 /* EAGLViewController.m */; };
 		317BF4FE116383E0004F0AF9 /* EAGLViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 317BF4FD116383E0004F0AF9 /* EAGLViewController.xib */; };
-		31BA53461163ED9400AED0F5 /* ShowST.fsh in Resources */ = {isa = PBXBuildFile; fileRef = 31BA53421163ED9400AED0F5 /* ShowST.fsh */; };
-		31BA53471163ED9400AED0F5 /* ShowST.vsh in Resources */ = {isa = PBXBuildFile; fileRef = 31BA53431163ED9400AED0F5 /* ShowST.vsh */; };
-		31BA53481163ED9400AED0F5 /* TEITextureShader.fsh in Resources */ = {isa = PBXBuildFile; fileRef = 31BA53441163ED9400AED0F5 /* TEITextureShader.fsh */; };
-		31BA53491163ED9400AED0F5 /* TEITextureShader.vsh in Resources */ = {isa = PBXBuildFile; fileRef = 31BA53451163ED9400AED0F5 /* TEITextureShader.vsh */; };
+		3183DB621164C71500E9119C /* Brick.png in Resources */ = {isa = PBXBuildFile; fileRef = 3183DB461164C71500E9119C /* Brick.png */; };
+		3183DB661164C71500E9119C /* Brick_mipmap_4.pvr in Resources */ = {isa = PBXBuildFile; fileRef = 3183DB4A1164C71500E9119C /* Brick_mipmap_4.pvr */; };
+		3183DB671164C71500E9119C /* candycane_scalar_disk.png in Resources */ = {isa = PBXBuildFile; fileRef = 3183DB4B1164C71500E9119C /* candycane_scalar_disk.png */; };
+		3183DB681164C71500E9119C /* diagnostic.png in Resources */ = {isa = PBXBuildFile; fileRef = 3183DB4C1164C71500E9119C /* diagnostic.png */; };
+		3183DB691164C71500E9119C /* dylan.png in Resources */ = {isa = PBXBuildFile; fileRef = 3183DB4D1164C71500E9119C /* dylan.png */; };
+		3183DB6A1164C71500E9119C /* lena.png in Resources */ = {isa = PBXBuildFile; fileRef = 3183DB4E1164C71500E9119C /* lena.png */; };
+		3183DB6B1164C71500E9119C /* mandrill.png in Resources */ = {isa = PBXBuildFile; fileRef = 3183DB501164C71500E9119C /* mandrill.png */; };
+		3183DB6F1164C71500E9119C /* mandrill_flipped_for_pvr_mip_4.pvr in Resources */ = {isa = PBXBuildFile; fileRef = 3183DB541164C71500E9119C /* mandrill_flipped_for_pvr_mip_4.pvr */; };
+		3183DB701164C71500E9119C /* orientation.png in Resources */ = {isa = PBXBuildFile; fileRef = 3183DB561164C71500E9119C /* orientation.png */; };
+		3183DB741164C71500E9119C /* orientation_flipped_for_pvr_mip_4.pvr in Resources */ = {isa = PBXBuildFile; fileRef = 3183DB5A1164C71500E9119C /* orientation_flipped_for_pvr_mip_4.pvr */; };
+		3183DB751164C71500E9119C /* swirl.png in Resources */ = {isa = PBXBuildFile; fileRef = 3183DB5C1164C71500E9119C /* swirl.png */; };
+		3183DB791164C71500E9119C /* swirl_flipped_for_pvr_mip_4.pvr in Resources */ = {isa = PBXBuildFile; fileRef = 3183DB601164C71500E9119C /* swirl_flipped_for_pvr_mip_4.pvr */; };
+		3183DB7A1164C71500E9119C /* twitter_fail_whale.png in Resources */ = {isa = PBXBuildFile; fileRef = 3183DB611164C71500E9119C /* twitter_fail_whale.png */; };
+		3183DB7F1164C77500E9119C /* ShowST.fsh in Resources */ = {isa = PBXBuildFile; fileRef = 3183DB7B1164C77500E9119C /* ShowST.fsh */; };
+		3183DB801164C77500E9119C /* ShowST.vsh in Resources */ = {isa = PBXBuildFile; fileRef = 3183DB7C1164C77500E9119C /* ShowST.vsh */; };
+		3183DB811164C77500E9119C /* TEITextureShader.fsh in Resources */ = {isa = PBXBuildFile; fileRef = 3183DB7D1164C77500E9119C /* TEITextureShader.fsh */; };
+		3183DB821164C77500E9119C /* TEITextureShader.vsh in Resources */ = {isa = PBXBuildFile; fileRef = 3183DB7E1164C77500E9119C /* TEITextureShader.vsh */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -61,10 +74,23 @@
 		317BF4E3116380F1004F0AF9 /* EAGLViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EAGLViewController.h; sourceTree = "<group>"; };
 		317BF4E4116380F1004F0AF9 /* EAGLViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EAGLViewController.m; sourceTree = "<group>"; };
 		317BF4FD116383E0004F0AF9 /* EAGLViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EAGLViewController.xib; sourceTree = "<group>"; };
-		31BA53421163ED9400AED0F5 /* ShowST.fsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = ShowST.fsh; sourceTree = "<group>"; };
-		31BA53431163ED9400AED0F5 /* ShowST.vsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = ShowST.vsh; sourceTree = "<group>"; };
-		31BA53441163ED9400AED0F5 /* TEITextureShader.fsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = TEITextureShader.fsh; sourceTree = "<group>"; };
-		31BA53451163ED9400AED0F5 /* TEITextureShader.vsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = TEITextureShader.vsh; sourceTree = "<group>"; };
+		3183DB461164C71500E9119C /* Brick.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Brick.png; sourceTree = "<group>"; };
+		3183DB4A1164C71500E9119C /* Brick_mipmap_4.pvr */ = {isa = PBXFileReference; lastKnownFileType = file; path = Brick_mipmap_4.pvr; sourceTree = "<group>"; };
+		3183DB4B1164C71500E9119C /* candycane_scalar_disk.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = candycane_scalar_disk.png; path = Textures/candycane_scalar_disk.png; sourceTree = "<group>"; };
+		3183DB4C1164C71500E9119C /* diagnostic.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = diagnostic.png; path = Textures/diagnostic.png; sourceTree = "<group>"; };
+		3183DB4D1164C71500E9119C /* dylan.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = dylan.png; path = Textures/dylan.png; sourceTree = "<group>"; };
+		3183DB4E1164C71500E9119C /* lena.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = lena.png; path = Textures/lena.png; sourceTree = "<group>"; };
+		3183DB501164C71500E9119C /* mandrill.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mandrill.png; sourceTree = "<group>"; };
+		3183DB541164C71500E9119C /* mandrill_flipped_for_pvr_mip_4.pvr */ = {isa = PBXFileReference; lastKnownFileType = file; path = mandrill_flipped_for_pvr_mip_4.pvr; sourceTree = "<group>"; };
+		3183DB561164C71500E9119C /* orientation.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = orientation.png; sourceTree = "<group>"; };
+		3183DB5A1164C71500E9119C /* orientation_flipped_for_pvr_mip_4.pvr */ = {isa = PBXFileReference; lastKnownFileType = file; path = orientation_flipped_for_pvr_mip_4.pvr; sourceTree = "<group>"; };
+		3183DB5C1164C71500E9119C /* swirl.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = swirl.png; sourceTree = "<group>"; };
+		3183DB601164C71500E9119C /* swirl_flipped_for_pvr_mip_4.pvr */ = {isa = PBXFileReference; lastKnownFileType = file; path = swirl_flipped_for_pvr_mip_4.pvr; sourceTree = "<group>"; };
+		3183DB611164C71500E9119C /* twitter_fail_whale.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = twitter_fail_whale.png; path = Textures/twitter_fail_whale.png; sourceTree = "<group>"; };
+		3183DB7B1164C77500E9119C /* ShowST.fsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; name = ShowST.fsh; path = Shaders/ShowST.fsh; sourceTree = "<group>"; };
+		3183DB7C1164C77500E9119C /* ShowST.vsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; name = ShowST.vsh; path = Shaders/ShowST.vsh; sourceTree = "<group>"; };
+		3183DB7D1164C77500E9119C /* TEITextureShader.fsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; name = TEITextureShader.fsh; path = Shaders/TEITextureShader.fsh; sourceTree = "<group>"; };
+		3183DB7E1164C77500E9119C /* TEITextureShader.vsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; name = TEITextureShader.vsh; path = Shaders/TEITextureShader.vsh; sourceTree = "<group>"; };
 		32CA4F630368D1EE00C91783 /* HelloiPadGLSLPortraitLandscape_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HelloiPadGLSLPortraitLandscape_Prefix.pch; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* HelloiPadGLSLPortraitLandscape-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "HelloiPadGLSLPortraitLandscape-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -124,6 +150,7 @@
 			children = (
 				080E96DDFE201D6D7F000001 /* Classes */,
 				2514C27610084DB600A42282 /* Shaders */,
+				3183DB441164C6F600E9119C /* Textures */,
 				29B97315FDCFA39411CA2CEA /* Other Sources */,
 				29B97317FDCFA39411CA2CEA /* Resources */,
 				29B97323FDCFA39411CA2CEA /* Frameworks */,
@@ -196,13 +223,69 @@
 			name = "Vectors & Matrices";
 			sourceTree = "<group>";
 		};
+		3183DB441164C6F600E9119C /* Textures */ = {
+			isa = PBXGroup;
+			children = (
+				3183DB4B1164C71500E9119C /* candycane_scalar_disk.png */,
+				3183DB611164C71500E9119C /* twitter_fail_whale.png */,
+				3183DB4C1164C71500E9119C /* diagnostic.png */,
+				3183DB4D1164C71500E9119C /* dylan.png */,
+				3183DB4E1164C71500E9119C /* lena.png */,
+				3183DB451164C71500E9119C /* Brick */,
+				3183DB4F1164C71500E9119C /* mandrill */,
+				3183DB551164C71500E9119C /* orientation */,
+				3183DB5B1164C71500E9119C /* swirl */,
+			);
+			name = Textures;
+			sourceTree = "<group>";
+		};
+		3183DB451164C71500E9119C /* Brick */ = {
+			isa = PBXGroup;
+			children = (
+				3183DB461164C71500E9119C /* Brick.png */,
+				3183DB4A1164C71500E9119C /* Brick_mipmap_4.pvr */,
+			);
+			name = Brick;
+			path = Textures/Brick;
+			sourceTree = "<group>";
+		};
+		3183DB4F1164C71500E9119C /* mandrill */ = {
+			isa = PBXGroup;
+			children = (
+				3183DB501164C71500E9119C /* mandrill.png */,
+				3183DB541164C71500E9119C /* mandrill_flipped_for_pvr_mip_4.pvr */,
+			);
+			name = mandrill;
+			path = Textures/mandrill;
+			sourceTree = "<group>";
+		};
+		3183DB551164C71500E9119C /* orientation */ = {
+			isa = PBXGroup;
+			children = (
+				3183DB561164C71500E9119C /* orientation.png */,
+				3183DB5A1164C71500E9119C /* orientation_flipped_for_pvr_mip_4.pvr */,
+			);
+			name = orientation;
+			path = Textures/orientation;
+			sourceTree = "<group>";
+		};
+		3183DB5B1164C71500E9119C /* swirl */ = {
+			isa = PBXGroup;
+			children = (
+				3183DB5C1164C71500E9119C /* swirl.png */,
+				3183DB601164C71500E9119C /* swirl_flipped_for_pvr_mip_4.pvr */,
+			);
+			name = swirl;
+			path = Textures/swirl;
+			sourceTree = "<group>";
+		};
 		31BA53401163ED5B00AED0F5 /* The Elastic Image Shaders */ = {
 			isa = PBXGroup;
 			children = (
-				31BA53431163ED9400AED0F5 /* ShowST.vsh */,
-				31BA53421163ED9400AED0F5 /* ShowST.fsh */,
-				31BA53451163ED9400AED0F5 /* TEITextureShader.vsh */,
-				31BA53441163ED9400AED0F5 /* TEITextureShader.fsh */,
+				3183DB7C1164C77500E9119C /* ShowST.vsh */,
+				3183DB7B1164C77500E9119C /* ShowST.fsh */,
+				3183DB7E1164C77500E9119C /* TEITextureShader.vsh */,
+				3183DB7D1164C77500E9119C /* TEITextureShader.fsh */,
 			);
 			name = "The Elastic Image Shaders";
 			sourceTree = "<group>";
@@ -251,12 +334,25 @@
 			files = (
 				2514C27B10084DCA00A42282 /* Shader.fsh in Resources */,
 				2514C27C10084DCA00A42282 /* Shader.vsh in Resources */,
-				31BA53471163ED9400AED0F5 /* ShowST.vsh in Resources */,
-				31BA53461163ED9400AED0F5 /* ShowST.fsh in Resources */,
-				31BA53491163ED9400AED0F5 /* TEITextureShader.vsh in Resources */,
-				31BA53481163ED9400AED0F5 /* TEITextureShader.fsh in Resources */,
+				3183DB7F1164C77500E9119C /* ShowST.fsh in Resources */,
+				3183DB801164C77500E9119C /* ShowST.vsh in Resources */,
+				3183DB811164C77500E9119C /* TEITextureShader.fsh in Resources */,
+				3183DB821164C77500E9119C /* TEITextureShader.vsh in Resources */,
 				28AD733F0D9D9553002E5188 /* MainWindow.xib in Resources */,
 				317BF4FE116383E0004F0AF9 /* EAGLViewController.xib in Resources */,
+				3183DB621164C71500E9119C /* Brick.png in Resources */,
+				3183DB661164C71500E9119C /* Brick_mipmap_4.pvr in Resources */,
+				3183DB671164C71500E9119C /* candycane_scalar_disk.png in Resources */,
+				3183DB681164C71500E9119C /* diagnostic.png in Resources */,
+				3183DB691164C71500E9119C /* dylan.png in Resources */,
+				3183DB6A1164C71500E9119C /* lena.png in Resources */,
+				3183DB6B1164C71500E9119C /* mandrill.png in Resources */,
+				3183DB6F1164C71500E9119C /* mandrill_flipped_for_pvr_mip_4.pvr in Resources */,
+				3183DB701164C71500E9119C /* orientation.png in Resources */,
+				3183DB741164C71500E9119C /* orientation_flipped_for_pvr_mip_4.pvr in Resources */,
+				3183DB751164C71500E9119C /* swirl.png in Resources */,
+				3183DB791164C71500E9119C /* swirl_flipped_for_pvr_mip_4.pvr in Resources */,
+				3183DB7A1164C71500E9119C /* twitter_fail_whale.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

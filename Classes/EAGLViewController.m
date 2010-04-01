@@ -9,6 +9,7 @@
 #import "EAGLViewController.h"
 #import "EAGLView.h"
 #import "ES2Renderer.h"
+#import "TEITexture.h"
 
 @interface EAGLViewController (PrivateMethods)
 - (NSString*)interfaceOrientationName:(UIInterfaceOrientation) interfaceOrientation;
@@ -39,14 +40,9 @@
 		
 //	EAGLView *glView = (EAGLView *)self.view;
 //	
-//	TEITexture	*texture_0 = [[ [TEITexture alloc] initWithImageFile:@"lena" extension:@"png" mipmap:YES ] autorelease];
-//	[glView.renderer.rendererHelper.renderables setObject:texture_0 forKey:@"texture_0"];
-//
-//	TEITexture	*texture_1 = [[ [TEITexture alloc] initWithImageFile:@"mandrill" extension:@"png" mipmap:YES ] autorelease];
-//	[glView.renderer.rendererHelper.renderables setObject:texture_1 forKey:@"texture_1"];
-//	
-//	[glView.renderer setupGLView:self.view.bounds.size];
-	
+//	TEITexture	*t = [[ [TEITexture alloc] initWithImageFile:@"twitter_fail_whale" extension:@"png" mipmap:YES ] autorelease];
+//	[glView.renderer.rendererHelper.renderables setObject:t forKey:@"texture_0"];
+
 }
 
 - (void)viewWillAppear:(BOOL)animated {
